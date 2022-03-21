@@ -6,7 +6,9 @@ import { BsArrowRight } from "react-icons/bs";
 
 const HomeEditorial = () => {
   return (
-    <Wrapper className="section-center">      
+    <Wrapper className="section-center">     
+     <div className="editorial-wrapper">
+      
       <div className="text-wrapper">
         <h4>HAT, BEANIE, CAP...YOUR HEADWEAR SHOP </h4>
         <p>
@@ -64,12 +66,15 @@ const HomeEditorial = () => {
           </div>
           </div>
       </div>
+      </div> 
     </Wrapper>
   );
 };
 const Wrapper = styled.section`
-    display:flex; 
-    margin-top:60px;
+.editorial-wrapper{
+  display:flex; 
+  margin-top:60px;
+}
     .text-wrapper{
         flex: 0 0 50%;
     }
@@ -122,6 +127,14 @@ const Wrapper = styled.section`
     }
     .image-container img{
         width:100%;
+    }
+    @media(max-width:600px){
+      .editorial-wrapper{
+        flex-direction:column-reverse;
+      }
+      h4{
+        text-align:center;
+      }
     }
     `
 export default HomeEditorial;

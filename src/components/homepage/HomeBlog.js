@@ -81,6 +81,11 @@ margin-top:90px;
     // height: 45px;
     // max-height: 45px;
   }
+  @media(max-width:600px){
+    .section-center {
+      flex-direction:column-reverse;
+  }
+}
 `;
 
 export default HomeBlog;

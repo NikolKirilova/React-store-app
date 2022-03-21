@@ -5,6 +5,9 @@ import heroMain from '../../assets/hero-main.png'
 
 const Hero = () => {
   return <Wrapper className="section-full-width">
+    <div className="hero-wrapper">
+
+     
     <article className='content'>
       <div className="content-wrapper">
       <h1>
@@ -25,15 +28,19 @@ const Hero = () => {
        
 
     </article>
+    </div>
   </Wrapper>
 }
 
 const Wrapper = styled.section`
+.hero-wrapper{
+
   min-height: 60vh;
   display: flex;
   background-color:#D7D5CA;
+}
   .img-container {
-    display: none;
+    // display: none;
   }
 
   p {
@@ -56,6 +63,25 @@ const Wrapper = styled.section`
   h1{
     font-size:12rem;
   }
+
+  @media(max-width:600px){
+    .hero-wrapper{
+      flex-direction:column-reverse;
+    }
+    .img-container img{
+      width:100%;
+    }
+    h1{
+      font-size:7rem;
+    }
+    .content{
+      text-align:center;
+      padding-bottom:20px;
+    }
+  }
+
+  
+
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
     position:relative;
@@ -155,6 +181,7 @@ const Wrapper = styled.section`
     }
    
   }
+ 
 `
 
 export default Hero

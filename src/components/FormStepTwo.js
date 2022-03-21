@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 import { useState, useRef, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
@@ -16,11 +16,15 @@ const FormStepTwo = () => {
   const postalCodeInputRef = useRef();
   const cityInputRef = useRef();
   const phoneInputRef = useRef();
+  const paymentInputRef = useRef();
+
 
   const authCtx = useContext(AuthContext);
   // const id = localStorage.getItem("localId");
-  const currentNam =  authCtx.displayName;
-  console.log(currentNam);
+  const userEmail = localStorage.getItem("user");
+  console.log(userEmail)
+
+   
 
   const [isLogin, setIsLogin] = useState(true);
   const [currentName, setCurrentName] = useState();
@@ -35,38 +39,38 @@ const FormStepTwo = () => {
     const postalCode = postalCodeInputRef.current.value;
     const city = cityInputRef.current.value;
     const phone = phoneInputRef.current.value;
+    const payment = paymentInputRef.current.value;
     // const userId = id;
 
     const addressData = {
-      displayName: displayName,
+      display_name: displayName,
       email:email,
       address: address,
       postal_code: postalCode,
       city: city,
       phone: phone,
+      payment:payment,
     };
 
     //add validation
 
     setIsLoading(true);
-    // axios({
-    //   method: "post",
-    //   url: "http://127.0.0.1:8000/api/users",
-    //   data: {
-    //     first_name: firstName,
-    //     last_name: lastName,
-    //     email: enteredEmail,
-    //     password: enteredPassword,
-    //     user_id: userId,
-    //   },
-    // }).then(
-    //   (response) => {
-    //     console.log(response);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
+    axios('http://127.0.0.1:8000/api/order',{
+      method: "post",
+      // url: "https://restapi-new.herokuapp.com/api/order",
+      
+      data: {addressData},
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
 
   return (
@@ -84,8 +88,7 @@ const FormStepTwo = () => {
                     id="display-name"
                     required
                     ref={displayNameInputRef}
-                    value={currentNam}
-                    onChange={setCurrentName}
+                  
                   />
                 </div> <div className="control">
                   <label htmlFor="email">Email</label>
@@ -93,7 +96,7 @@ const FormStepTwo = () => {
                     type="text"
                     id="email"
                     required
-                    ref={emailInputRef}
+                    ref={emailInputRef}                 
                   />
                 </div>
                 <div className="control">
@@ -122,19 +125,30 @@ const FormStepTwo = () => {
                   <label htmlFor="phone">Phone</label>
                   <input type="text" id="phone" required ref={phoneInputRef} />
                 </div>
-                <div className="new-customer-title">
+                <div className="control-checkbox">
                   <input
                     type="checkbox"
                     defaultChecked={true}
                     value="Track and Trace Europe"
+                    className="checkbox-input"
                   />
                   <label htmlFor="transport">Track and Trace Europe</label>
                 </div>
-                <div className="new-customer-title">
+                <div className="control-checkbox">
+                  <input 
+                  type="checkbox" 
+                  id="payment"
+                   required
+                    // ref={paymentInputRef} 
+                    defaultChecked={true}
+                    className="checkbox-input"/>
+                  <label htmlFor="payment">Payment with Bank transfer</label>
+                </div>
+                {/* <div className="new-customer-title">
                   Pay with PayPal
                   <PayPalButtons style={{ layout: "horizontal" }} />
-                  {/* <PayPalCheckoutButton/> */}
-                </div>
+                 
+                </div> */}
                 <div className="actions">
                   {/* {!isLoading && (
               <button>Continue </button>
@@ -215,6 +229,17 @@ const Wrapper = styled.section`
   }
   .control input:focus-visible {
     border: none;
+  }
+  .control-checkbox{
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 9px 20px;
+    text-align: left;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .checkbox-input{
+    margin-right:10px;
   }
 
   .actions {

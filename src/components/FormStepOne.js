@@ -9,9 +9,6 @@ import { FirstTab, SecondTab } from "../components";
 const FormStepOne = () => {
   const history = useHistory();
 
- 
-  
-
   const authCtx = useContext(AuthContext);
   // const id = localStorage.getItem("localId");
 
@@ -19,10 +16,9 @@ const FormStepOne = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-
   const [activeTab, setActiveTab] = useState("tab1");
-   //  Functions to handle Tab Switching
-   const handleTab1 = () => {
+  //  Functions to handle Tab Switching
+  const handleTab1 = () => {
     // update the state to tab1
     setActiveTab("tab1");
   };
@@ -31,114 +27,131 @@ const FormStepOne = () => {
     setActiveTab("tab2");
   };
 
-  const loginUserHandler = (userInfo)=>{    
-    axios('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM',{
-    method: "POST",  
-    data: {...userInfo, returnSecureToken:true},
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    
-    .then((res) => {
-      setIsLoading(false);
-      if (res.status === 200){
-         
-        console.log(res.data);
-        
-  
-        const expirationTime = new Date(new Date().getTime() + (+res.data.expiresIn * 1000));
-        authCtx.login(res.data.idToken, expirationTime.toISOString(), res.data.email,res.data.localId);
-       
-        
-        history.replace('/checkout');
-
-      }
-    })
-    .catch((err) => {
-      alert(err.message);
-    });
-  }
-
-  const registerUserHandler =(userData)=>{
-    axios('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM',{
-      method: "POST",  
-      data: {...userData, returnSecureToken:true},
+  const loginUserHandler = (userInfo) => {
+    axios(
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM",
+      {
+        method: "POST",
+        data: { ...userInfo, returnSecureToken: true },
         headers: {
           "Content-Type": "application/json",
         },
-      })
+      }
+    )
       .then((res) => {
         setIsLoading(false);
-        if (res.status === 200){
-           
+        if (res.status === 200) {
           console.log(res.data);
-          // console.log(res.data.localId);
-          // console.log(res.data.idToken);
-    
-          const expirationTime = new Date(new Date().getTime() + (+res.data.expiresIn * 1000));
-          authCtx.login(res.data.idToken, expirationTime.toISOString(), res.data.email,res.data.localId);
-         
-          
-          history.replace('/checkout');
 
+          const expirationTime = new Date(
+            new Date().getTime() + +res.data.expiresIn * 1000
+          );
+          authCtx.login(
+            res.data.idToken,
+            expirationTime.toISOString(),
+            res.data.email,
+            res.data.localId
+          );
+
+          history.replace("/checkout");
         }
       })
-       
       .catch((err) => {
         alert(err.message);
       });
-    
-    console.log(userData)
-   
-      
-  }
+  };
 
- 
+  const registerUserHandler = (userData) => {
+    axios(
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM",
+      {
+        method: "POST",
+        data: { ...userData, returnSecureToken: true },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        setIsLoading(false);
+        if (res.status === 200) {
+          console.log(res.data);
+          // console.log(res.data.localId);
+          // console.log(res.data.idToken);
+
+          const expirationTime = new Date(
+            new Date().getTime() + +res.data.expiresIn * 1000
+          );
+          authCtx.login(
+            res.data.idToken,
+            expirationTime.toISOString(),
+            res.data.email,
+            res.data.localId
+          );
+
+          history.replace("/checkout");
+        }
+      })
+
+      .catch((err) => {
+        alert(err.message);
+      });
+
+    console.log(userData);
+  };
 
   // const submitHandler = (event) => {
   //   event.preventDefault();
-  
 
   //   setIsLoading(true);
-    // axios({
-    //   method: "post",
-    //   url: "http://127.0.0.1:8000/api/users",
-    //   data: {
-    //     first_name: firstName,
-    //     last_name: lastName,
-    //     email: enteredEmail,
-    //     password: enteredPassword,
-    //     user_id: userId,
-    //   },
-    // }).then(
-    //   (response) => {
-    //     console.log(response);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
- 
+  // axios({
+  //   method: "post",
+  //   url: "http://127.0.0.1:8000/api/users",
+  //   data: {
+  //     first_name: firstName,
+  //     last_name: lastName,
+  //     email: enteredEmail,
+  //     password: enteredPassword,
+  //     user_id: userId,
+  //   },
+  // }).then(
+  //   (response) => {
+  //     console.log(response);
+  //   },
+  //   (error) => {
+  //     console.log(error);
+  //   }
+  // );
 
   return (
     <Wrapper className="">
       <section className="auth">
-         
         <div className="personal-info">
           <div className="personal-info-tabs">
             <div className="new-customer-title">
-              <button className={activeTab === "tab1" ? "active" : ""}  onClick={handleTab1}>
+              <button
+                className={activeTab === "tab1" ? "active" : ""}
+                onClick={handleTab1}
+              >
                 New customer
               </button>
             </div>
-            <div  >
-              <button className={activeTab === "tab2" ? "active" : ""} onClick={handleTab2}>
+            <div>
+              <button
+                className={activeTab === "tab2" ? "active" : ""}
+                onClick={handleTab2}
+              >
                 Sign in
-                </button>
+              </button>
             </div>
           </div>
-            <div>{activeTab === "tab1" ? <FirstTab onRegisterUser={registerUserHandler} /> : <SecondTab  onLoginUser={loginUserHandler}/>}  </div>
+          <div>
+            {activeTab === "tab1" ? (
+              <FirstTab onRegisterUser={registerUserHandler} />
+            ) : (
+              <SecondTab onLoginUser={loginUserHandler} />
+            )}{" "}
+          </div>
         </div>
       </section>
     </Wrapper>
@@ -155,22 +168,26 @@ const Wrapper = styled.section`
     padding: 1rem;
     text-align: center;
     color: #212529;
+    display: flex;
+    justify-content: center;    
+    margin-bottom: 150px;
+
   }
-  .personal-info-tabs{
+  .personal-info-tabs {
     margin-bottom: 20px;
   }
-  
-  .personal-info-tabs button{
+
+  .personal-info-tabs button {
     width: 200px;
     height: 40px;
     border: 1px solid #999;
     border-bottom: none;
-    color:#d9d9d9;
-    background :#f7f7f7;
+    color: #d9d9d9;
+    background: #f7f7f7;
   }
-  .personal-info-tabs button.active{
-    background:#fff;
-    color:#000;
+  .personal-info-tabs button.active {
+    background: #fff;
+    color: #000;
   }
   .tab {
     color: #666;
@@ -239,8 +256,8 @@ const Wrapper = styled.section`
   }
 
   .actions button:hover {
-    background-color: #f33328;;
-    border-color: #f33328;;
+    background-color: #f33328;
+    border-color: #f33328;
   }
 
   .actions .toggle {

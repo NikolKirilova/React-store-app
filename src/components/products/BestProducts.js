@@ -87,6 +87,24 @@ const BestProducts = () => {
     .second-product:hover .second-product-title{
         transform:translateX(-10px)
     }
+    @media(max-width:600px){
+        .section-center{
+            flex-direction:column;
+        }
+        .second-product-title,.first-product-title{
+            left:50%;
+            right:50%;
+        }
+        .second-product-title{
+            bottom:-17px;
+        }
+        .first-product-title{
+            bottom:-60px;
+        }
+        .second-product{
+            padding: 45px 0px 0px 7px;
+        }
+    }
     
     
      

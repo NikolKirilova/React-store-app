@@ -157,7 +157,19 @@ const Wrapper = styled.main`
     font-weight: 900;
     letter-spacing: 0.2px;
   }
-
+  @media(max-width:600px){
+    .product-center {
+      flex-direction:column;
+    }
+    .single-product-image,
+    .product-info{
+      max-width:100%;
+      
+    }
+    .product-info{
+      padding: 0 20px;
+    }
+  }
   @media (min-width: 992px) {
   
     .price {

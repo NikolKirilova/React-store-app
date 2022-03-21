@@ -142,6 +142,14 @@ const Wrapper = styled.section`
       margin:5px 0;
       font-weight:600;
   }
+  @media(max-width:600px){
+    .section-center h1{
+      font-size:4rem;
+    }
+    .owl-carousel.owl-loaded {
+      height:250px;
+    }
+  }
   @media screen and (min-width: 992px) {
     .section-center {
       width: 920px;

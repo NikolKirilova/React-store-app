@@ -58,6 +58,11 @@ const Wrapper = styled.section`
     font-size: 30px;
     letter-spacing: 0.2px;
   }
+  @media(max-width:600px){
+    .featured{
+      flex-direction:column;
+    }
+  }
   
 `
 

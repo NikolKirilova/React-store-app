@@ -92,6 +92,7 @@ const Wrapper = styled.section`
     padding: 1rem;
     text-align: center;
     color: #212529;
+    
   }
 
   .auth h1 {

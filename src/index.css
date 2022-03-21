@@ -228,3 +228,9 @@ h5 {
 .page {
   min-height: calc(100vh - (20vh + 10rem));
 }
+@media(max-width:600px){
+  p{
+    max-width:90%;
+    margin:auto;
+  }
+}

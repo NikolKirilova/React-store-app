@@ -114,6 +114,9 @@ const Wrapper = styled.footer`
   .logo-footer{
     padding: 30px 0 50px 0;
   }
+  .logo-footer img{
+    width:160px;
+  }
 
   .footer-copyright{
     padding:50px 0;
@@ -164,6 +167,12 @@ const Wrapper = styled.footer`
   }
   @media (min-width: 776px) {
     flex-direction: row;
+  }
+  @media(max-width: 600px){
+    .footer-wrapper{
+      flex-direction:column;
+      padding: 0 20px;
+    }
   }
 `
 

@@ -24,7 +24,7 @@ const CartButtons = () => {
     <Wrapper>
       <div className="auth-wrapper">
         {!isLoggedIn && (
-          <Link to="/auth" className="auth-btn">
+          <Link to="/login" className="auth-btn">
             {/* Login  */}
             {/* <FaRegUser />
        <BiUser/> */}

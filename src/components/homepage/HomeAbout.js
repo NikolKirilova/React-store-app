@@ -4,8 +4,10 @@ import homeAbout from '../../assets/mea-theheadwearhome.jpg'
 import { Link } from "react-router-dom";
 const HomeAbout = () => {
     return <Wrapper className="section-full-width">
+    <div className="home-about">
 
-     <article className='img-container'>
+     
+     <article className='img-container hero-image'>
       <img src={homeAbout} alt="nice table" className="main-img"/>      
     </article>    
     <article className='content'>
@@ -32,19 +34,22 @@ const HomeAbout = () => {
     </div>
       </div>
     </article>
-
+    </div>
    
   </Wrapper>
 }
 
 const Wrapper = styled.section`
+.home-about{
+
   min-height: 60vh;
   display: flex;
   background-color:#D7D5CA;
   height:auto;
-  .img-container {
-    display: none;
-  }
+}
+  // .img-container {
+  //   display: none;
+  // }
 
   p {
     line-height: 2;
@@ -73,6 +78,20 @@ const Wrapper = styled.section`
     letter-spacing:0.5px;
     margin-bottom: 1.2rem;
   }
+
+  
+  @media(max-width:600px){
+    .home-about{
+      flex-direction:column-reverse;
+    }
+    .img-container img{
+      width:100%;
+    }
+    .title-wrapper h1{
+      font-size:4rem;
+    }
+  }
+
   @media (min-width: 992px) {
  
     position:relative;
@@ -124,6 +143,11 @@ const Wrapper = styled.section`
       border-radius: var(--radius);
     }
    
+  }
+  @media(max-width:600px){
+    .section-full-width{
+      flex-direction:column-reverse;
+    }
   }
 `
  

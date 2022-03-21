@@ -7,7 +7,9 @@ import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product }) => {
   const {addToCart} = useCartContext();
-  const { id, stock, colors } = product;
+  const { id, stock,images ,colors } = product;
+ 
+  console.log(images);
   console.log(colors);
   let colorsar= colors.split(', ');
   console.log(colorsar);
