@@ -1,23 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import { formatPrice } from '../../utils/helpers'
-import AmountButtons from './AmountButtons'
-import { FaTrash } from 'react-icons/fa'
-import { useCartContext } from '../../context/cart_context'
-const CartItemPreview = ({id,image,name,color,price}) => {   
+const CartItemPreview = ({id,images,name,color,price}) => {   
  
   return <Wrapper>
     <div className="title">
-      <img src={image} alt={name} />
+      <img src={images} alt={name} />
       <div>
         <h5 className="name">{name}</h5>
         <p className="color">
           color : <span style={{background:color}}></span>
+        
         </p>
-        <h5 className="price-small">{formatPrice(price)}</h5>
+    <h5 className="price">{formatPrice(price)}</h5>
       </div>
     </div>
-    <h5 className="price">{formatPrice(price)}</h5>
      
     
      
@@ -31,14 +28,17 @@ const Wrapper = styled.article`
     display: none;
   }
   .price {
-    display: none;
+    display: block;
+    font-size: 0.9rem;
+    color:#000;
+    font-weight: 600;
   }
 display:flex;
   justify-items: center;
   margin-bottom: 3rem;
   align-items: center;
   .title {
-    grid-template-rows: 75px;
+    grid-template-rows: 55px;
     display: grid;
     grid-template-columns: 75px 125px;
     align-items: center;
@@ -47,9 +47,9 @@ display:flex;
   }
   img {
     width: 100%;
-    height: 100%;
+    height: 100px;
     display: block;
-    border-radius: var(--radius);
+    border-radius: 0.5rem;
     object-fit: cover;
   }
   h5 {
@@ -75,9 +75,7 @@ display:flex;
       border-radius: var(--radius);
     }
   }
-  .price-small {
-    color: var(--clr-primary-5);
-  }
+ 
   .amount-btns {
     width: 75px;
     button {
@@ -108,19 +106,12 @@ display:flex;
     .subtotal {
       display: block;
       margin-bottom: 0;
-      color: var(--clr-grey-5);
-      font-weight: 400;
+      color: #000;
+      font-weight: 600;
       font-size: 1rem;
     }
-    .price-small {
-      display: none;
-    }
-    .price {
-      display: block;
-      font-size: 1rem;
-      color: var(--clr-primary-5);
-      font-weight: 400;
-    }
+   
+ 
     .name {
       font-size: 0.85rem;
     }
@@ -133,9 +124,9 @@ display:flex;
     }
     grid-template-columns: 1fr 1fr 1fr 1fr auto;
     align-items: center;
-    grid-template-rows: 75px;
+    grid-template-rows: 55px;
     img {
-      height: 100%;
+      height: 90px;
     }
     .title {
       height: 100%;

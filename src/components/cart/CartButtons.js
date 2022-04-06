@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { FaShoppingCart, FaUserMinus, FaRegUser } from "react-icons/fa";
+// import { FaShoppingCart, FaUserMinus, FaRegUser } from "react-icons/fa";
 import { HiOutlineUser } from "react-icons/hi";
-import { BiUser, BiShoppingBag, BiSearch } from "react-icons/bi";
+import {  BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useProductsContext } from "../../context/products_context";
@@ -22,9 +22,10 @@ const CartButtons = () => {
   const { total_items } = useCartContext();
   return (
     <Wrapper>
+      
       <div className="auth-wrapper">
         {!isLoggedIn && (
-          <Link to="/login" className="auth-btn">
+          <Link to="/auth" className="auth-btn">
             {/* Login  */}
             {/* <FaRegUser />
        <BiUser/> */}
@@ -50,9 +51,8 @@ const CartButtons = () => {
           </span>
         </Link>
       </div>
-      <div className="search-btn-wrapper">
-        <BiSearch />
-      </div>
+     
+      
     </Wrapper>
   );
 };
@@ -71,8 +71,7 @@ const Wrapper = styled.div`
     margin: 0 12px;
   }
 
-  .auth-wrapper,
-  .search-btn-wrapper  {
+  .auth-wrapper   {
     display: flex;
     // width: 300px;
     justify-content: center;
@@ -80,8 +79,8 @@ const Wrapper = styled.div`
 
 
   .auth-btn svg,
-  .cart-container svg,
-  .search-btn-wrapper svg {
+  .cart-container svg
+  {
     height: 24px;
     width: 24px;
     // stroke-width: 2;
@@ -131,5 +130,19 @@ const Wrapper = styled.div`
       margin-left: 5px;
     }
   }
+  @media(max-width:600px){
+    .auth-wrapper {
+      position:absolute;
+      top:20px;
+      left:43%;
+    }
+    .cart-btn-wrapper{
+      position:absolute;
+      top:10px;
+      left:53%;
+      display:flex
+    }
+  }
+ 
 `;
 export default CartButtons;
