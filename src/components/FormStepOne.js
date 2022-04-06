@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import AuthContext from "../context/auth_context";
@@ -12,9 +12,10 @@ const FormStepOne = () => {
   const authCtx = useContext(AuthContext);
   // const id = localStorage.getItem("localId");
 
-  const [isLogin, setIsLogin] = useState(true);
+  // const [isLogin, setIsLogin] = useState(true);
 
   const [isLoading, setIsLoading] = useState(false);
+  console.log(isLoading);
 
   const [activeTab, setActiveTab] = useState("tab1");
   //  Functions to handle Tab Switching

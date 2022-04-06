@@ -1,30 +1,34 @@
 import React from "react";
-import { useState, useRef, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import {  useRef } from "react";
+// import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import AuthContext from "../context/auth_context";
+ 
 
 const FirstTab = (props) => {
-  const firstNameInputRef = useRef();
-  const lastNameInputRef = useRef();
+   
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-  const authCtx = useContext(AuthContext);
+  // const authCtx = useContext(AuthContext);
   // const id = localStorage.getItem("localId");
 
-  const [isLogin, setIsLogin] = useState(true);
+  // const [isLogin, setIsLogin] = useState(true);
 
-  const switchAuthModeHandler = () => {
-    setIsLogin((prevState) => !prevState);
-  };
+   const onBlurHandler = (emailInputRef) => {
+    // var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+    if(!emailInputRef.current.value.includes('@')){   
+      alert(`Enter valid email!`);
+    }
+    if (emailInputRef.current.value === "") {
+       alert(`Your name field is empty!`);
+     }  
+   }
+  
 
-  const [disabled, setDisable] = React.useState(true);
+  
 
   const submitHandler = (event) => {
     event.preventDefault();
-    let enteredFirstName = firstNameInputRef.current.value;
-    let enteredLastName = lastNameInputRef.current.value;
     let enteredEmail = emailInputRef.current.value;
     let enteredPassword = passwordInputRef.current.value;
     // const userId = id;
@@ -32,15 +36,10 @@ const FirstTab = (props) => {
     const userData = {
       email: enteredEmail,
       password: enteredPassword,
-      displayName: enteredFirstName,
-      lastName: enteredLastName,
     };
 
     props.onRegisterUser(userData);
-
-
-    firstNameInputRef.current.value = "";
-    lastNameInputRef.current.value = "";
+   
     emailInputRef.current.value = "";
     passwordInputRef.current.value = "";
 
@@ -48,22 +47,15 @@ const FirstTab = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className="control">
-        <label htmlFor="firstName">First Name</label>
-        <input type="text" id="firstName" required ref={firstNameInputRef} />
-      </div>
-      <div className="control">
-        <label htmlFor="name">Second Name</label>
-        <input type="text" id="name" required ref={lastNameInputRef} />
-      </div>
+    <Wrapper> 
+    <form onSubmit={submitHandler}>      
       <div className="control">
         <label htmlFor="email">Your Email</label>
-        <input type="email" id="email" required ref={emailInputRef} />
+        <input type="email" id="email" required ref={emailInputRef} onBlur={onBlurHandler.bind(this, emailInputRef)} />
       </div>
       <div className="control">
         <label htmlFor="password">Your Password</label>
-        <input type="password" id="password" required ref={passwordInputRef} />
+        <input type="password" id="password" required ref={passwordInputRef}/>
       </div>
       <div className="actions">
         {/* {!isLoading && (
@@ -80,6 +72,7 @@ const FirstTab = (props) => {
         </button>
       </div>
     </form>
+    </Wrapper>
   );
 };
 const Wrapper = styled.section`

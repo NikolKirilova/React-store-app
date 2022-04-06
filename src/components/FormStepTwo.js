@@ -1,17 +1,15 @@
 import React from "react";
 import axios from "axios";
-import { useState, useRef, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useState, useRef } from "react";
+// import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import AuthContext from "../context/auth_context";
-import { PayPalButtons } from "@paypal/react-paypal-js";
-import PayPalCheckoutButton from "./PaypalCheckoutButton";
+// import AuthContext from "../context/auth_context";
+ 
 
 const FormStepTwo = () => {
-  const history = useHistory();
+  // const history = useHistory();
   
-  const displayNameInputRef = useRef();
-  const emailInputRef = useRef();
+  const nameInputRef = useRef();
   const addressInputRef = useRef();
   const postalCodeInputRef = useRef();
   const cityInputRef = useRef();
@@ -19,22 +17,21 @@ const FormStepTwo = () => {
   const paymentInputRef = useRef();
 
 
-  const authCtx = useContext(AuthContext);
+  // const authCtx = useContext(AuthContext);
   // const id = localStorage.getItem("localId");
   const userEmail = localStorage.getItem("user");
   console.log(userEmail)
 
    
 
-  const [isLogin, setIsLogin] = useState(true);
-  const [currentName, setCurrentName] = useState();
+  // const [isLogin, setIsLogin] = useState(true);
+  // const [currentName, setCurrentName] = useState();
 
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(isLoading);
   const submitHandler = (event) => {
     event.preventDefault();
-    const displayName = displayNameInputRef.current.value;
-    const email = emailInputRef.current.value;
+    const name = nameInputRef.current.value;
     const address = addressInputRef.current.value;
     const postalCode = postalCodeInputRef.current.value;
     const city = cityInputRef.current.value;
@@ -43,8 +40,7 @@ const FormStepTwo = () => {
     // const userId = id;
 
     const addressData = {
-      display_name: displayName,
-      email:email,
+      name: name,
       address: address,
       postal_code: postalCode,
       city: city,
@@ -78,27 +74,19 @@ const FormStepTwo = () => {
       <section className="auth">
         <div className="personal-info">
           <div className="personal-info-tabs">
-            <div className="new-customer-title">Address</div>
+            <h4 className="new-customer-title">Order information</h4>
             <div>
               <form onSubmit={submitHandler}>
               <div className="control">
-                  <label htmlFor="display-name">Name</label>
+                  <label htmlFor="name">Your Name</label>
                   <input
                     type="text"
-                    id="display-name"
+                    id="name"
                     required
-                    ref={displayNameInputRef}
+                    ref={nameInputRef}
                   
                   />
-                </div> <div className="control">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="text"
-                    id="email"
-                    required
-                    ref={emailInputRef}                 
-                  />
-                </div>
+                </div> 
                 <div className="control">
                   <label htmlFor="address">Address</label>
                   <input
@@ -156,7 +144,7 @@ const FormStepTwo = () => {
             {isLoading && <p>Sending request ...</p>} */}
                   <button
                   //   type="button"
-                  //   className="toggle"
+                    className="order-btn"
                   //   onClick={switchAuthModeHandler}
                   >
                   Order with an obligation to pay
@@ -174,8 +162,8 @@ const FormStepTwo = () => {
 const Wrapper = styled.section`
   .auth {
     margin: 3rem auto;
-    // width: 95%;
-    // max-width: 25rem;
+  display:flex;
+  justify-content:flex-end;
     border-radius: 6px;
     // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     padding: 1rem;
@@ -186,6 +174,7 @@ const Wrapper = styled.section`
     color: #666;
     background: #000;
   }
+ 
 
   .auth h1 {
     text-align: left;
@@ -193,12 +182,12 @@ const Wrapper = styled.section`
   }
   .personal-info {
     width: 380px;
+    margin-right:70px;
   }
-
-  .personal-info-tabs {
-    display: flex;
-    justify-content: space-around;
-  }
+.personal-info-tabs h4{
+  margin-bottom:2rem;
+}
+ 
 
   .control {
     margin-bottom: 0.5rem;
@@ -236,33 +225,21 @@ const Wrapper = styled.section`
     padding: 9px 20px;
     text-align: left;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 24px;
+    margin-left: 46px;
   }
   .checkbox-input{
     margin-right:10px;
   }
 
   .actions {
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
   }
 
-  .actions button {
-    cursor: pointer;
-    font: inherit;
-    color: white;
-    background-color: #f5554c;
-    border-color: #f5554c;
-    border-radius: 4px;
-    padding: 0.5rem 2.5rem;
-  }
-
-  .actions button:hover {
-    background-color: #f33328;
-    border-color: #f33328;
-  }
+  
 
   .actions .toggle {
     margin-top: 1rem;
@@ -275,6 +252,22 @@ const Wrapper = styled.section`
   .actions .toggle:hover {
     background-color: transparent;
     color: #ae82cc;
+  }
+  .order-btn{
+    cursor: pointer;
+    font-size: 13px;
+    color: white;
+    background-color: #f5554c;
+    text-transform: uppercase;
+    border:1px solid #f5554c;
+    border-radius: 19px;
+    padding: 0.7rem 2.7rem;
+    font-weight: 550;
+    letter-spacing: 0.3px;
+  }
+  .order-btn:hover{
+    background-color: #f33328;
+    border-color: #f33328;
   }
 `;
 export default FormStepTwo;

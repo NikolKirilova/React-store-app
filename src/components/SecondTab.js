@@ -1,99 +1,92 @@
 import React from "react";
-import { useState, useRef, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import {  useRef  } from "react";
 import styled from "styled-components";
-import AuthContext from "../context/auth_context";
+ 
 
-const SecondTab =(props)=> {
+const SecondTab = (props) => {
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
 
-     
-    const emailInputRef = useRef();
-    const passwordInputRef = useRef();
+  // const authCtx = useContext(AuthContext);
 
-    const authCtx = useContext(AuthContext);
+  // const [isLogin, setIsLogin] = useState(true);
 
-    const [isLogin, setIsLogin] = useState(true);
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
 
-     
+    const userInfo = {
+      email: enteredEmail,
+      password: enteredPassword,
+    };
 
-    const submitHandler = (event) => {
-        event.preventDefault();         
-        const enteredEmail = emailInputRef.current.value;
-        const enteredPassword = passwordInputRef.current.value;
+    props.onLoginUser(userInfo);
 
-        const userInfo = {
-          email: enteredEmail,
-          password: enteredPassword        
-        };
+    //add validation
+  };
 
-
-        props.onLoginUser(userInfo);
-      
-    
-        //add validation
-    }
-  
-    return (
-        <form onSubmit={submitHandler}>
-      
-          <div className="control">
-            <label htmlFor="email">Your Email</label>
-            <input type="email" id="email" required ref={emailInputRef} />
-          </div>
-          <div className="control">
-            <label htmlFor="password">Your Password</label>
-            <input
-              type="password"
-              id="password"
-              required
-              ref={passwordInputRef}
-            />
-          </div>
-          <div className="actions">
-            {/* {!isLoading && (
+  return (
+    <Wrapper>
+      <form onSubmit={submitHandler}>
+        <div className="control">
+          <label htmlFor="email">Your Email</label>
+          <input type="email" id="email" required ref={emailInputRef} />
+        </div>
+        <div className="control">
+          <label htmlFor="password">Your Password</label>
+          <input
+            type="password"
+            id="password"
+            required
+            ref={passwordInputRef}
+          />
+        </div>
+        <div className="actions">
+          {/* {!isLoading && (
               <button>Continue </button>
             )}
             {isLoading && <p>Sending request ...</p>} */}
-            <button
-            //   type="button"
-            //   className="toggle"
-            //   onClick={switchAuthModeHandler}
-            >
-              Login with existing account
-            </button>
-          </div>
-        </form>)
-   
-    
-}
+          <button
+          //   type="button"
+          //   className="toggle"
+          //   onClick={switchAuthModeHandler}
+          >
+            Login with existing account
+          </button>
+        </div>
+      </form>
+    </Wrapper>
+  );
+};
 const Wrapper = styled.section`
   .auth {
     margin: 3rem auto;
     // width: 95%;
     // max-width: 25rem;
-    border-radius: 6px;     
+    border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     text-align: center;
-    color:#212529;
+    color: #212529;
   }
 
   .auth h1 {
     text-align: left;
     letter-spacing: 0.1px;
   }
-  .personal-info{
-    width:380px;
+  .personal-info {
+    width: 380px;
   }
 
-  .personal-info-tabs{
+  .personal-info-tabs {
     display: flex;
     justify-content: space-around;
   }
 
   .control {
     margin-bottom: 0.5rem;
-    display:flex;
+    display: flex;
   }
 
   .control label {
@@ -112,14 +105,14 @@ const Wrapper = styled.section`
     text-align: left;
     padding: 0.25rem;
   }
-  .control input:focus{
-    color:#495057;
-    background-color:#fff;
-    border-color:#404040;
+  .control input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #404040;
     box-shadow: 0 0 0 0.2rem rgb(0 0 0 /25%);
   }
-  .control input:focus-visible{
-    border:none;
+  .control input:focus-visible {
+    border: none;
   }
 
   .actions {
@@ -133,7 +126,7 @@ const Wrapper = styled.section`
     cursor: pointer;
     font: inherit;
     color: white;
-   
+
     border-radius: 4px;
     padding: 0.5rem 2.5rem;
   }
