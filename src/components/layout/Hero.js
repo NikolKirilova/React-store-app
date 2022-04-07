@@ -11,8 +11,7 @@ const Hero = () => {
     <article className='content'>
       <div className="content-wrapper">
       <h1>
-        NEW <br/>
-        ERA
+        NEW  ERA
       </h1>
       <h3>
         MLB Wild Camo
@@ -35,7 +34,7 @@ const Hero = () => {
 const Wrapper = styled.section`
 .hero-wrapper{
 
-  min-height: 60vh;
+  min-height: 90vh;
   display: flex;
   background-color:#D7D5CA;
 }
@@ -61,18 +60,21 @@ const Wrapper = styled.section`
   }
   
   h1{
-    font-size:12rem;
+    font-size:11rem;
   }
 
   @media(max-width:600px){
     .hero-wrapper{
       flex-direction:column-reverse;
+      min-height:78vh;
     }
     .img-container img{
       width:100%;
     }
     h1{
       font-size:7rem;
+      line-height:7rem;
+      margin-top:-30px;
     }
     .content{
       text-align:center;
@@ -89,11 +91,14 @@ const Wrapper = styled.section`
     .content-wrapper{
     position: absolute;
     top: 16%;
-    left:16%;
+    left: 16%;
+    right: -8%;
     -webkit-animation: slideUp 0.8s;
       -moz-animation: slideUp 0.8s;
       animation-delay:1.6s;
       animation: slideUp 0.8s;
+      margin-top:170px;
+      z-index:12;
      }
   
     h1 {

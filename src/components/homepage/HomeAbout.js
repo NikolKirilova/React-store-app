@@ -88,7 +88,10 @@ const Wrapper = styled.section`
       width:100%;
     }
     .title-wrapper h1{
-      font-size:4rem;
+      font-size:3.5rem;
+    }
+    .content-wrapper{
+      padding:10px 10px 30px 10px; 
     }
   }
 
@@ -104,7 +107,8 @@ const Wrapper = styled.section`
     position: absolute;
     top: 7%;
     left:-13%;
-    width:100%;    
+    width:100%; 
+      
      }
 
     .text-wrapper{

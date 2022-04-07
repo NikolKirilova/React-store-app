@@ -135,6 +135,14 @@ const Wrapper = styled.section`
       h4{
         text-align:center;
       }
+      .image-container{
+        display:none;
+      }
+      .text-container{
+        flex:0 0 100%;
+        height:120px;
+        margin-bottom:20px;
+      }
     }
     `
 export default HomeEditorial;

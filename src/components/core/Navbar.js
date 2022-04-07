@@ -91,9 +91,7 @@ const NavContainer = styled.nav`
   .nav-links {
     display: none;
   }
-  .cart-btn-wrapper {
-    display: none;
-  }
+ 
   @media (min-width: 992px) {
     .nav-toggle {
       display: none;

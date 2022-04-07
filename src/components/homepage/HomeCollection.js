@@ -57,28 +57,28 @@ const HomeCollection = () => {
       <div className="image">
       <img src={secondImage} alt="" className="carousel-img"/>
       </div>
-      <a href="#" className="product-title">Trucker Le Gaulois</a>
+      <Link to='/products' className="product-title">Trucker Le Gaulois</Link>
       <div className="product-price">$22.17</div>
       </div>
       <div className="product-wrapper">
       <div className="image">
       <img src={thirdImage} alt="" className="carousel-img"/>
       </div>
-      <a href="#" className="product-title">Broderie en rouge casquette </a>
+      <Link to='/products' className="product-title">Broderie en rouge casquette </Link>
       <div className="product-price"> $22.17</div>
       </div>
       <div className="product-wrapper">
       <div className="image">
       <img src={fourImage} alt="" className="carousel-img"/>
       </div>
-      <a href="#" className="product-title">El Profesor </a>
+      <Link to='/products' className="product-title">El Profesor </Link>
       <div className="product-price">$22.17 </div>
       </div>
       <div className="product-wrapper">
       <div className="image">
       <img src={fiveImage} alt="" className="carousel-img"/>
       </div>
-      <a href="#" className="product-title">Docker Ocean Legend black </a>
+      <Link to='/products' className="product-title">Docker Ocean Legend black </Link>
       <div className="product-price">$35.52 </div>
       </div>  
     
@@ -148,6 +148,12 @@ const Wrapper = styled.section`
     }
     .owl-carousel.owl-loaded {
       height:250px;
+    }
+    .section{
+      padding:2rem;
+    }
+    h1{
+      line-height:5rem;
     }
   }
   @media screen and (min-width: 992px) {

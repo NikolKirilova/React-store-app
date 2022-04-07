@@ -85,6 +85,15 @@ margin-top:90px;
     .section-center {
       flex-direction:column-reverse;
   }
+  .blog-link{
+    font-size:36px;
+  }
+  .blog-intro h2{
+    font-size:32px;
+  }
+  .blog-intro{
+    margin-right:0;
+  }
 }
 `;
 
