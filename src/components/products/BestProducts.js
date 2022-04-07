@@ -99,10 +99,13 @@ const BestProducts = () => {
             bottom:-17px;
         }
         .first-product-title{
-            bottom:-60px;
+           top:16px;
+        }
+        .first-product{
+            padding:0;
         }
         .second-product{
-            padding: 45px 0px 0px 7px;
+            padding: 0;
         }
     }
     
