@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { PageHero, FormStepOne, FormStepTwo,FormStepThree, FormStepFour,CartPreview } from "../components";
+import {  FormStepTwo,CartPreview } from "../components";
 // extra imports
-import { useCartContext } from "../context/cart_context";
-import { Link } from "react-router-dom";
-
+ 
+ 
 const CheckoutPage = () => {
-  const { cart } = useCartContext();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('whole form json');
-  };
+  // const { cart } = useCartContext();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log('whole form json');
+  // };
   return (
     <main>
       {/* <PageHero title="checkout" /> */}
@@ -37,9 +36,9 @@ const CheckoutPage = () => {
   );
 };
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
   .empty {
     text-align: center;
   }

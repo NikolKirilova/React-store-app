@@ -25,18 +25,16 @@ export const links = [
     url: '/products',
     submenu: [
       {
-        title: "more about us"
+        title: "Hats",
+        url: '/categories/hats',
       },
       {
-        title: "our goals"
+        title: "Beanies",
+        url: '/categories/beanies',
       }
     ]
   },
-  {
-    id: 4,
-    text: 'Checkout',
-    url: '/checkout',
-  },
+ 
 ]
 
 export const services = [
@@ -71,4 +69,5 @@ export const products_url = 'https://online-store-f849d-default-rtdb.europe-west
 // export const single_product_url = `https://online-store-f849d-default-rtdb.europe-west1.firebasedatabase.app/products.json`
 // export const single_product_url = `http://127.0.0.1:8000/api/products/`
 // export const single_product_url = `https://backend-restapp.herokuapp.com/api/products/`
-export const single_product_url = `https://restapi-new.herokuapp.com/api/products/`
+// export const single_product_url = `https://restapi-new.herokuapp.com/api/products/`
+export const single_product_url = `https://job.trader-energy.com/api/products/`

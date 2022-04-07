@@ -9,12 +9,10 @@ import {
   ProductImages,
   AddToCart,
   Stars,
-  PageHero,
   Breadcrumbs,
   FeaturedProducts
 } from '../components'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 const SingleProductPage = () => {
   const {id} = useParams();
@@ -29,16 +27,16 @@ const SingleProductPage = () => {
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
     console.log(product);
-
+// eslint-disable-next-line
   },[id])
 
   useEffect(() => {
     if(error){
-      // setTimeout(() => {
-      //   history.push('/')
-      // },3000)
+      setTimeout(() => {
+        history.push('/')
+      },300000)
       console.log(error)
-    }
+    }// eslint-disable-next-line
   },[error])
 
   if (loading) {
