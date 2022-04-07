@@ -5,10 +5,12 @@ import About from './AboutPage'
 import Cart from './CartPage'
 import Error from './ErrorPage'
 import Checkout from './CheckoutPage'
+import CategoryPage from './CategoryPage'
+import SingleCategoryPage from './SingleCategoryPage'
  
 // import PrivateRoute from './PrivateRoute'
 // import AuthWrapper from './AuthWrapper'
  
 
 
-export { Home,Products, SingleProduct,About,Cart,Error,Checkout}
+export { Home,Products, SingleProduct,About,Cart,Error,Checkout,CategoryPage,SingleCategoryPage}

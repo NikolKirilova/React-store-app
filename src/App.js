@@ -4,7 +4,7 @@ import { Navbar, Sidebar, Footer, UserProfile, FormStepOne } from './components'
 import AuthContext from './context/auth_context'
 import { Redirect } from 'react-router-dom'
 
-import { Home, Products, SingleProduct,About,Cart,Error,Checkout } from './pages'
+import { Home, Products, SingleProduct,About,Cart,Error,Checkout,CategoryPage,SingleCategoryPage } from './pages'
 import StepTwoCheckout from './pages/StepTwoCheckout'
 
  
@@ -38,8 +38,10 @@ function App() {
         < Products/>
       </Route>
       <Route exact path='/products/:id' children={<SingleProduct/>} />
-      <Route exact path='/categories/:id' children={<Products/>} />
-
+       <Route exact path='/categories'>
+         <CategoryPage/>
+       </Route>
+       <Route exact path='/categories/:id' children={<SingleCategoryPage/>} />
       <Route exact path='/checkout'>
         <Checkout /> 
       </Route>

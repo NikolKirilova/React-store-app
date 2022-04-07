@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { ProductsProvider } from "./context/products_context";
+import { CategoriesProvider } from "./context/categories_context";
 import { FilterProvider } from "./context/filter_context";
 import { CartProvider } from "./context/cart_context";
 import { AuthContextProvider} from "./context/auth_context"; 
@@ -20,6 +21,7 @@ ReactDOM.render(
   //   cacheLocation="localstorage"
   // >
   <AuthContextProvider>  
+    <CategoriesProvider> 
         <ProductsProvider>
       <FilterProvider>
         <CartProvider>
@@ -27,6 +29,7 @@ ReactDOM.render(
         </CartProvider>
       </FilterProvider>
     </ProductsProvider>
+    </CategoriesProvider>
   </AuthContextProvider>,
  
   // </Auth0Provider>,

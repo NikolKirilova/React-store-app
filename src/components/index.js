@@ -31,6 +31,8 @@ import SecondTab from './SecondTab'
 import FormStepTwo from './FormStepTwo'
 import OldAuthForm from './OldAuthForm'
 import CartPreview from './cart/CartPreview'
+import CategoriesList from './categories/CategoriesList'
+import GridView from './products/GridView'
 
 export {
   FeaturedProducts,
@@ -65,5 +67,7 @@ export {
   FirstTab,
   SecondTab,
   OldAuthForm,
-  CartPreview
+  CartPreview,
+  CategoriesList,
+  GridView
 }
