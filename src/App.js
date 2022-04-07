@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Navbar, Sidebar, Footer, UserProfile, AuthForm, FormStepOne } from './components'
+import { Navbar, Sidebar, Footer, UserProfile, FormStepOne } from './components'
 import AuthContext from './context/auth_context'
 import { Redirect } from 'react-router-dom'
 
@@ -20,7 +20,7 @@ function App() {
         <Home />
       </Route>
       {!authCtx.isLoggedIn && (<Route path='/auth'>
-          <AuthForm />
+      <FormStepOne/> 
         </Route>
         )}
         <Route path='/profile'>
@@ -38,10 +38,12 @@ function App() {
         < Products/>
       </Route>
       <Route exact path='/products/:id' children={<SingleProduct/>} />
+      <Route exact path='/categories/:id' children={<Products/>} />
+
       <Route exact path='/checkout'>
         <Checkout /> 
       </Route>
-      <Route exact path='/login'>
+      <Route exact path='auth'>
         <FormStepOne/> 
       </Route>
       <Route exact path='/step-two'>

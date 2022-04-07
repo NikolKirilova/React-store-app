@@ -5,8 +5,7 @@ import App from "./App";
 import { ProductsProvider } from "./context/products_context";
 import { FilterProvider } from "./context/filter_context";
 import { CartProvider } from "./context/cart_context";
-import { AuthContextProvider} from "./context/auth_context";
-import { PayPalScriptProvider  } from "@paypal/react-paypal-js";
+import { AuthContextProvider} from "./context/auth_context"; 
 // import { UserProvider } from "./context/user_context";
 // import { Auth0Provider } from "@auth0/auth0-react";
 
@@ -20,8 +19,7 @@ ReactDOM.render(
   //   redirectUri={window.location.origin}
   //   cacheLocation="localstorage"
   // >
-  <AuthContextProvider>
-    <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_ID }}> 
+  <AuthContextProvider>  
         <ProductsProvider>
       <FilterProvider>
         <CartProvider>
@@ -29,7 +27,6 @@ ReactDOM.render(
         </CartProvider>
       </FilterProvider>
     </ProductsProvider>
-    </PayPalScriptProvider>
   </AuthContextProvider>,
  
   // </Auth0Provider>,

@@ -30,7 +30,8 @@ const FormStepOne = () => {
 
   const loginUserHandler = (userInfo) => {
     axios(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM",
+      // "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM",
+      "https://job.trader-energy.com/api/login",
       {
         method: "POST",
         data: { ...userInfo, returnSecureToken: true },
@@ -41,17 +42,17 @@ const FormStepOne = () => {
     )
       .then((res) => {
         setIsLoading(false);
-        if (res.status === 200) {
+        if (res.status === 201) {
           console.log(res.data);
 
           const expirationTime = new Date(
-            new Date().getTime() + +res.data.expiresIn * 1000
+            new Date().getTime() + +res.data.user.expires_in * 1000
           );
           authCtx.login(
-            res.data.idToken,
+            res.data.token,
             expirationTime.toISOString(),
-            res.data.email,
-            res.data.localId
+            res.data.user.email,
+            // res.data.localId
           );
 
           history.replace("/checkout");
@@ -64,7 +65,8 @@ const FormStepOne = () => {
 
   const registerUserHandler = (userData) => {
     axios(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM",
+      // "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAi1TLxgD9IkUz6kypN0VRbDGqalCWdPLM",
+      "https://job.trader-energy.com/api/register",
       {
         method: "POST",
         data: { ...userData, returnSecureToken: true },
@@ -75,19 +77,19 @@ const FormStepOne = () => {
     )
       .then((res) => {
         setIsLoading(false);
-        if (res.status === 200) {
+        if (res.status === 201) {
           console.log(res.data);
-          // console.log(res.data.localId);
+          console.log(res.data.user.email);
           // console.log(res.data.idToken);
 
           const expirationTime = new Date(
-            new Date().getTime() + +res.data.expiresIn * 1000
+            new Date().getTime() + +res.data.user.expires_in * 1000
           );
           authCtx.login(
-            res.data.idToken,
+            res.data.token,
             expirationTime.toISOString(),
-            res.data.email,
-            res.data.localId
+            res.data.user.email,
+            // res.data.localId
           );
 
           history.replace("/checkout");

@@ -17,7 +17,6 @@ import Stars from './product/Stars'
 import CartContent from './cart/CartContent'
 import PageHero from './layout/PageHero'
 import UserProfile from './user/UserProfile'
-import AuthForm from './AuthForm'
 import BestProducts from './products/BestProducts'
 import TradeMarks from './homepage/TradeMarks'
 import HomeAbout from './homepage/HomeAbout'
@@ -30,8 +29,6 @@ import FormStepOne from './FormStepOne'
 import FirstTab from './FirstTab'
 import SecondTab from './SecondTab'
 import FormStepTwo from './FormStepTwo'
-import FormStepThree from './FormStepThree'
-import FormStepFour from './FormStepFour'
 import OldAuthForm from './OldAuthForm'
 import CartPreview from './cart/CartPreview'
 
@@ -55,7 +52,6 @@ export {
   CartContent,
   PageHero,
   UserProfile,
-  AuthForm,
   BestProducts,
   TradeMarks,
   HomeAbout,
@@ -68,8 +64,6 @@ export {
   FormStepTwo,
   FirstTab,
   SecondTab,
-  FormStepThree,
-  FormStepFour,
   OldAuthForm,
   CartPreview
 }

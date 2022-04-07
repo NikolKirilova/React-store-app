@@ -19,7 +19,7 @@ const FormStepTwo = () => {
 
   // const authCtx = useContext(AuthContext);
   // const id = localStorage.getItem("localId");
-  const userEmail = localStorage.getItem("user");
+  const userEmail = localStorage.getItem("email");
   console.log(userEmail)
 
    

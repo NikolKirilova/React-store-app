@@ -2,20 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import { useCartContext } from '../../context/cart_context' 
 import { formatPrice } from '../../utils/helpers'
+ 
 
-const CartTotals = () => {
+const CartTotalsPreview = () => {
   const {total_amount, shipping_fee} = useCartContext();
   return <Wrapper> 
     <div>
       <article>
         <h5>subtotal : <span>{formatPrice(total_amount)}</span></h5>
-        <p>shipping fee : <span>{formatPrice(shipping_fee)}</span></p>
+        <p>shipping fee : <span>Free</span></p>
         <hr />
         <h4>
-          order total :{' '}
+          Total :{' '}
           <span>{formatPrice(total_amount + shipping_fee)}</span>
         </h4>
       </article>
+ 
     
     </div>
   </Wrapper>
@@ -36,10 +38,10 @@ const Wrapper = styled.section`
     text-transform: capitalize;
   }
   h4 {
-    margin-top: 2rem;
+    margin-top: 0.75rem;
   }
   @media (min-width: 776px) {
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   .btn {
     width: 100%;
@@ -47,6 +49,8 @@ const Wrapper = styled.section`
     text-align: center;
     font-weight: 700;
   }
+ 
+ 
 `
 
-export default CartTotals
+export default CartTotalsPreview;
