@@ -17,6 +17,7 @@ const MenuItems = ({ items }) => {
     }
     // window.innerWidth < 960 && setDropdown((prev) => !prev)
   };
+  
   return (
     <li className="menu-items">
       <Link
@@ -32,7 +33,7 @@ const MenuItems = ({ items }) => {
         {items.submenu ? (
           <Dropdown submenus={items.submenu} dropdown={dropdown} />
         ) : (
-          <Link to="/">{items.title}</Link>
+          <Link to={items.url}>{items.title}</Link>
         )}
         </Link>
     </li>

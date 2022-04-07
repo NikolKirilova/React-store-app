@@ -5,12 +5,16 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../../utils/constants";
 import { useProductsContext } from "../../context/products_context";
+ 
 import MenuItems from "./MenuItems";
 import CartButtons from "../cart/CartButtons";
 // import { useUserContext } from '../context/user_context'
 
 const Nav = () => {
-  const { openSidebar } = useProductsContext();   
+  const { openSidebar } = useProductsContext();
+ 
+ 
+  
   return (
     <NavContainer>
       <div className="nav-center">
@@ -33,6 +37,15 @@ const Nav = () => {
             );
           })}
         </ul>
+        {/* <ul className="nav-links">
+          {categories.map((category) => {
+              const {id,name} = category;
+              console.log(category.id)
+            return (
+              <button key={id} >{name}</button>
+            )
+          })}
+        </ul> */}
         <CartButtons />
       </div>
     </NavContainer>
